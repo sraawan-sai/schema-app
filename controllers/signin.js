@@ -16,7 +16,6 @@ signinRouter.post('/', async (req, res) => {
   const { phonenumber, code } = req.body;
 
   try {
-<<<<<<< HEAD
     console.log('Received request to sign in with phone number:', phonenumber);
     // Verify OTP
     console.log('Verifying OTP...');
@@ -27,14 +26,6 @@ signinRouter.post('/', async (req, res) => {
 console.log("verify",verificationCheck)
     if (verificationCheck.status !== 'approved') {
       console.log('OTP verification failed or expired');
-=======
-    // Verify OTP
-    const verificationCheck = await client.verify.services(serviceSid)
-      .verificationChecks
-      .create({ to: `+${phonenumber}`, code });
-
-    if (verificationCheck.status !== 'approved') {
->>>>>>> 5601935284a716225eb308138fec5382d091a6c1
       return res.status(400).json({ success: false, message: 'Invalid or expired OTP' });
     }
 
